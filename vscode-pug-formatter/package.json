@@ -1,0 +1,102 @@
+{
+	"name": "pug-formatter",
+	"displayName": "pug (jade) formatter",
+	"description": "A Pug/Jade formatter integrated with system formatter",
+	"version": "0.5.1",
+	"publisher": "ducfilan",
+	"engines": {
+		"vscode": "^1.37.0"
+	},
+	"icon": "icon.png",
+	"categories": [
+		"Formatters"
+	],
+	"activationEvents": [
+		"onLanguage:jade"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ducfilan/vscode-pug-formatter.git"
+	},
+	"keywords": [
+		"pug",
+		"jade",
+		"format",
+		"formatter",
+		"beautify",
+		"beautifier"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"languages": [
+			{
+				"id": "jade",
+				"aliases": [
+					"Pug"
+				],
+				"extensions": [
+					"pug",
+					"jade"
+				]
+			}
+		],
+		"configuration": {
+			"type": "object",
+			"title": "Pug formatter",
+			"properties": {
+				"pugFormatter.fillTab": {
+					"type": "string",
+					"enum": [
+						"default",
+						"yes",
+						"no"
+					],
+					"default": "default",
+					"description": "Fill whether tab or space, default by system settings"
+				},
+				"pugFormatter.removeDiv": {
+					"type": "boolean",
+					"default": false,
+					"description": "Whether remove 'div' tags, default false"
+				},
+				"pugFormatter.tabSize": {
+					"type": [
+						"number",
+						"null"
+					],
+					"default": null,
+					"description": "When 'fill_tab' is false, fill 'tab_size' spaces, default 4"
+				},
+				"pugFormatter.separatorSpace": {
+					"type": "boolean",
+					"default": true,
+					"description": "true: The attribute separator is a space, else a comma, default is space"
+				},
+				"pugFormatter.allowEmptyLines": {
+					"type": "boolean",
+					"default": true,
+					"description": "Allow blank lines, default true"
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^5.2.6",
+		"@types/node": "^10.12.21",
+		"@types/vscode": "^1.37.0",
+		"glob": "^7.1.4",
+		"mocha": "^6.1.4",
+		"typescript": "^3.3.1",
+		"tslint": "^5.12.1",
+		"vscode-test": "^1.0.2"
+	},
+	"dependencies": {}
+}
